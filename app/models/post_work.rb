@@ -1,0 +1,2 @@
+class PostWork < ApplicationRecord
+end

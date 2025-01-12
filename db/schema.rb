@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_01_12_024435) do
+ActiveRecord::Schema.define(version: 2025_01_12_060740) do
+
+  create_table "post_works", force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "user_id"
+    t.string "name"
+    t.text "work"
+    t.string "area"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
