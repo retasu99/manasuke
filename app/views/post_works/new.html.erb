@@ -1,1 +1,21 @@
 <h1>作業の新規投稿フォーム</h1>
+
+<%= form_with model: [@project_new, @post_work_new] do |f| %>
+  <h4>作業名</h4>
+  <%= f.text_field :name %>
+
+  <h4>作業内容</h4>
+  <%= f.text_area :work %>
+
+  <h4>作業場所</h4>
+  <%= f.text_field :area %>
+
+  <h4>作業開始日時</h4>
+  <%= f.datetime_field :start_at %>
+
+  <h4>作業終了日時</h4>
+  <%= f.datetime_field :end_at %><br>
+
+  <br><%= f.submit "投稿する" %>
+
+<% end %>
