@@ -15,6 +15,8 @@ class PostWorksController < ApplicationController
   end
 
   def index
+    @project = Project.find(params[:project_id])
+    
   end
 
   def show
