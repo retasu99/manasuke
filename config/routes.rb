@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+
   # get 'projects/index'
-  resources :projects, only: [:index]
+  resources :projects, only: [:index] do
+    resources :post_works
+  end
 
   devise_for :users
 

@@ -1,0 +1,2 @@
+class PostWorksController < ApplicationController
+end
