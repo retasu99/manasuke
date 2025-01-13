@@ -1,11 +1,15 @@
 <h1>作業一覧</h1>
 
 <% @project.post_works.each do |post_work| %>
-  <p>作業名：<%= post_work.name %></p>
-  <p>作業内容：<%= post_work.work %></p>
+
+  <p>作業名：
+  <%= link_to project_post_work_path(@project, post_work) do %>
+    <%= post_work.name %>
+  <% end %>
+  </p>
+
   <p>作業区画：<%= post_work.area %></p>
   <p>作業開始日時：<%= post_work.start_at %></p>
-  <p>作業終了日時：<%= post_work.end_at %></p>
-  <p>作業責任者：<%= post_work.user.name %></p>
+
   <p>========================================</p>
 <% end %>

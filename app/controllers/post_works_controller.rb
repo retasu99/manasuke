@@ -16,10 +16,10 @@ class PostWorksController < ApplicationController
 
   def index
     @project = Project.find(params[:project_id])
-    
   end
 
   def show
+    @post_work = PostWork.find(params[:id])
   end
 
 
