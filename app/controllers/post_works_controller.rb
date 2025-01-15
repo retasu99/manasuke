@@ -19,7 +19,15 @@ class PostWorksController < ApplicationController
   end
 
   def show
+    @project = Project.find(params[:project_id])
     @post_work = PostWork.find(params[:id])
+  end
+
+  def destroy
+    post_work = PostWork.find(params[:id])
+    post_work.destroy
+    project = Project.find(params[:project_id])
+    redirect_to project_post_works_path(project.id)
   end
 
 
