@@ -1,11 +1,13 @@
 <h1>作業一覧</h1>
 
+<%= link_to "新規投稿", new_project_post_work_path(@project.id) %>
+
+<p>================================================================</p>
+
 <% @project.post_works.each do |post_work| %>
 
   <p>作業名：
-  <%= link_to project_post_work_path(@project.id, post_work.id) do %>
-    <%= post_work.name %>
-  <% end %>
+  <%= link_to "#{post_work.name}", project_post_work_path(@project.id, post_work.id) %>
   </p>
 
   <p>作業区画：<%= post_work.area %></p>
