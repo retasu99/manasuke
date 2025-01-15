@@ -1,5 +1,11 @@
 <h1>プロジェクト一覧</h1>
 
 <% @projects.each do |project| %>
-  <p><%= project.name %></p>
+
+  <p>
+  <%= link_to project_post_works_path(project.id) do %>
+    <%= project.name %>
+  <% end %>
+  </p>
+
 <% end %>

@@ -3,7 +3,7 @@
 <% @project.post_works.each do |post_work| %>
 
   <p>作業名：
-  <%= link_to project_post_work_path(@project, post_work) do %>
+  <%= link_to project_post_work_path(@project.id, post_work.id) do %>
     <%= post_work.name %>
   <% end %>
   </p>
