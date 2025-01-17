@@ -1,2 +1,17 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>プロフィール編集</h1>
+
+<%= form_with model: @user do |f| %>
+  <h4>氏名</h4>
+  <%= f.text_field :name %>
+
+  <h4>所属</h4>
+  <%= f.text_field :team %>
+
+  <h4>電話番号</h4>
+  <%= f.text_field :telephone_number %>
+
+  <h4>メールアドレス</h4>
+  <%= f.text_field :email %>
+
+  <%= f.submit "変更を保存" %>
+<% end %>
