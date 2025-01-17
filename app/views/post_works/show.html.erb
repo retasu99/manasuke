@@ -9,6 +9,7 @@
   <p>作業責任者：<%= @post_work.user.name %></p>
 
   <% if @post_work.user == current_user %>
+    <%=link_to "編集", edit_project_post_work_path(@project.id, @post_work.id) %>
     <%=link_to "削除", project_post_work_path(@project.id, @post_work.id), method: :delete %>
   <% end %>
 </div>
