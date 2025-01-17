@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+
+  # get 'users/show'
+  # get 'users/edit'
+  resources :users, only: [:show, :edit]
+
   # get 'projects/index'
   resources :projects, only: [:index] do
     resources :post_works
   end
-
-  devise_for :users
 
   # get 'homes/top'
   root to: "homes#top"
