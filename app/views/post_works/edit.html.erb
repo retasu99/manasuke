@@ -1,0 +1,21 @@
+<h2>作業内容 編集フォーム</h2>
+
+<%= form_with model: [@project, @post_work] do |f| %>
+
+  <h4>作業名</h4>
+  <%= f.text_field :name, autofocus: true %>  
+
+  <h4>作業内容</h4>
+  <%= f.text_area :work %>
+
+  <h4>作業場所</h4>
+  <%= f.text_field :area %>
+
+  <h4>作業開始日時</h4>
+  <%= f.datetime_field :start_at %>
+
+  <h4>作業終了日時</h4>
+  <%= f.datetime_field :end_at %><br>
+
+  <%= f.submit "変更を保存" %>
+<% end %>
