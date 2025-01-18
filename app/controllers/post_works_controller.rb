@@ -1,4 +1,5 @@
 class PostWorksController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit, :update]
 
   def new
     @project = Project.find(params[:project_id])
@@ -56,6 +57,13 @@ class PostWorksController < ApplicationController
 
   def post_work_params 
     params.require(:post_work).permit(:name, :work, :area, :start_at, :end_at)
+  end
+
+  def is_matching_login_user
+    @post_work = PostWork.find(params[:id])
+    unless @post_work.user.id == current_user.id
+      redirect_to project_post_works_path
+    end
   end
 
 end
