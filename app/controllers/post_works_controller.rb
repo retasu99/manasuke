@@ -49,6 +49,7 @@ class PostWorksController < ApplicationController
   def destroy
     post_work = PostWork.find(params[:id])
     post_work.destroy
+    flash[:notice] = "Deleted your post successfully."
     redirect_to project_post_works_path
   end
 

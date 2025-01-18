@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])
     user.destroy
+    flash[:notice] = "Canceled your membership successfully."
     redirect_to :root
   end
 
