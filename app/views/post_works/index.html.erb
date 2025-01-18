@@ -7,7 +7,7 @@
 <% @project.post_works.each do |post_work| %>
 
   <p>作業名：
-  <%= link_to "#{post_work.name}", project_post_work_path(@project.id, post_work.id) %>
+    <%= link_to "#{post_work.name}", project_post_work_path(@project.id, post_work.id) %>
   </p>
 
   <p>作業区画：<%= post_work.area %></p>

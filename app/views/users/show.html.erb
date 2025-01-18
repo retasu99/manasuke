@@ -1,10 +1,27 @@
 <h1>ユーザープロフィール</h1>
 
-<p>氏名：<%= @user.name %></p>
-<p>所属：<%= @user.team %></p>
-<p>電話番号：<%= @user.telephone_number %></p>
-<p>メールアドレス：<%= @user.email %></p>
+<div>
+  <p>氏名：<%= @user.name %></p>
+  <p>所属：<%= @user.team %></p>
+  <p>電話番号：<%= @user.telephone_number %></p>
+  <p>メールアドレス：<%= @user.email %></p>
 
-<% if @user == current_user %>
-  <p><%= link_to "プロフィール編集", edit_user_path(current_user.id) %></p>
+  <% if @user == current_user %>
+    <p><%= link_to "プロフィール編集", edit_user_path(current_user.id) %></p>
+  <% end %>
+</div>
+
+<p>===========================================================</p>
+
+<h2>投稿一覧</h2>
+
+<% @post_works.each do |post_work| %>
+
+  <p>作業名：
+    <%= link_to "#{post_work.name}", project_post_work_path(post_work.project_id, post_work.id) %>
+  </p>
+  <p>作業区画：<%= post_work.area %></p>
+  <p>作業開始日時：<%= post_work.start_at %></p>
+
+  <p>----------------------------------------</p>
 <% end %>
