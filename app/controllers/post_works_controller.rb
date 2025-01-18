@@ -34,9 +34,15 @@ class PostWorksController < ApplicationController
   end
 
   def update
-    post_work = PostWork.find(params[:id])
-    post_work.update(post_work_params)
-    redirect_to project_post_works_path
+    @project = Project.find(params[:project_id])
+    @post_work = PostWork.find(params[:id])
+
+    if @post_work.update(post_work_params)
+      redirect_to project_post_works_path
+    else
+      render :edit
+    end
+
   end
 
   def destroy
