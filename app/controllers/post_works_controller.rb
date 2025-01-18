@@ -1,17 +1,22 @@
 class PostWorksController < ApplicationController
 
   def new
-    @project_new = Project.find(params[:project_id])
-    @post_work_new = PostWork.new
+    @project = Project.find(params[:project_id])
+    @post_work = PostWork.new
   end
 
   def create
-    post_work = PostWork.new(post_work_params)
-    project = Project.find(params[:project_id])
-    post_work.project_id = project.id
-    post_work.user_id = current_user.id
-    post_work.save
-    redirect_to project_post_works_path
+    @post_work = PostWork.new(post_work_params)
+    @project = Project.find(params[:project_id])
+    @post_work.project_id = @project.id
+    @post_work.user_id = current_user.id
+
+    if @post_work.save
+      redirect_to project_post_works_path
+    else
+      render :new
+    end
+
   end
 
   def index

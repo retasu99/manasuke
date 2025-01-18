@@ -1,6 +1,15 @@
 <h1>作業の新規投稿フォーム</h1>
 
-<%= form_with model: [@project_new, @post_work_new] do |f| %>
+<% if @post_work.errors.any? %>
+  <%= @post_work.errors.count %> error prohibited this obj from being saves:
+  <ul>
+    <% @post_work.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: [@project, @post_work] do |f| %>
   <h4>作業名</h4>
   <%= f.text_field :name %>
 
