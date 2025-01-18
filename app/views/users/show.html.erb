@@ -7,7 +7,10 @@
   <p>メールアドレス：<%= @user.email %></p>
 
   <% if @user == current_user %>
-    <p><%= link_to "プロフィール編集", edit_user_path(current_user.id) %></p>
+    <p>
+      <%= link_to "プロフィール編集", edit_user_path(current_user.id) %> | 
+      <%= link_to "退会処理", user_path(current_user.id), method: :delete, "data-confirm" => "Are you sure you cancel your membership?" %>
+    </p>
   <% end %>
 </div>
 
