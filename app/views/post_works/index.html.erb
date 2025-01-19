@@ -6,12 +6,14 @@
 
 <% @project.post_works.each do |post_work| %>
 
+<div>
   <p>作業名：
     <%= link_to "#{post_work.name}", project_post_work_path(@project.id, post_work.id) %>
   </p>
 
   <p>作業区画：<%= post_work.area %></p>
   <p>作業開始日時：<%= post_work.start_at %></p>
+</div>
 
   <p>----------------------------------------------------------------</p>
 <% end %>
