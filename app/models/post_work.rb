@@ -5,7 +5,7 @@ class PostWork < ApplicationRecord
   validates :name, presence: true
   validates :work, presence: true
   validates :area, presence: true
-  validates :start_at, presence: true
-  validates :end_at, presence: true
+  validates :start_time, presence: true
+  validates :end_time, presence: true
 
 end

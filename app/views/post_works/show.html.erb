@@ -4,8 +4,8 @@
   <p>作業名：<%= @post_work.name %></p>
   <p>作業内容：<%= @post_work.work %></p>
   <p>作業区画：<%= @post_work.area %></p>
-  <p>作業開始日時：<%= @post_work.start_at %></p>
-  <p>作業終了日時：<%= @post_work.end_at %></p>
+  <p>作業開始日時：<%= @post_work.start_time %></p>
+  <p>作業終了日時：<%= @post_work.end_time %></p>
   <p>作業責任者：<%= link_to "#{@post_work.user.name}", user_path(@post_work.user.id) %></p>
 
   <p>
