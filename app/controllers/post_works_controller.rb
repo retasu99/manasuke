@@ -57,7 +57,7 @@ class PostWorksController < ApplicationController
   private
 
   def post_work_params 
-    params.require(:post_work).permit(:name, :work, :area, :start_at, :end_at)
+    params.require(:post_work).permit(:name, :work, :area, :start_time, :end_time)
   end
 
   def is_matching_login_user
