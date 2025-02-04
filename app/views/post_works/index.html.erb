@@ -4,22 +4,13 @@
 
 <p>================================================================</p>
 
-<% @project.post_works.each do |post_work| %>
-
-<div>
-  <p>作業名：
-    <%= link_to "#{post_work.name}", project_post_work_path(@project.id, post_work.id) %>
-  </p>
-
-  <p>作業区画：<%= post_work.area %></p>
-  <p>作業開始日時：<%= post_work.start_time %></p>
-</div>
-
-  <p>----------------------------------------------------------------</p>
-<% end %>
-
 <h2>month</h2>
 
-<%= month_calendar do |date| %>
-  <%= date.day %>
-<% end %>
+<div>
+  <%= month_calendar events: @project.post_works do |date, post_works| %>
+    <%= date.day %><br>
+    <% post_works.each do |post_work| %>
+      <p><%= link_to "#{post_work.name}", project_post_work_path(@project.id, post_work.id) %></p>
+    <% end %>
+  <% end %>
+</div>
