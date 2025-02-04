@@ -16,7 +16,7 @@ yamaguchi = User.find_or_create_by!(email: "adoresu@g.com") do |user|
   user.password = "pasuwado"
 end
 
-tanaka = User.find_or_create_by!(email: "adoresu2@g.con") do |user|
+tanaka = User.find_or_create_by!(email: "adoresu2@g.com") do |user|
   user.team = "機装"
   user.name = "田中"
   user.telephone_number = "09088880000"
