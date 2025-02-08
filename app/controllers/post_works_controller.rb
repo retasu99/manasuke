@@ -27,6 +27,7 @@ class PostWorksController < ApplicationController
   def show
     @project = Project.find(params[:project_id])
     @post_work = PostWork.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def edit

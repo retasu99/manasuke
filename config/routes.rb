@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   # get 'projects/index'
   resources :projects, only: [:index] do
-    resources :post_works
+    resources :post_works do
+      resources :post_comments, only: [:create, :destroy]
+    end
   end
 
   # get 'homes/top'

@@ -1,6 +1,7 @@
 <h1>作業詳細</h1>
 
 <div>
+  <p>プロジェクト名：<%= link_to "#{@post_work.project.name}", project_post_works_path(@project.id) %></p>
   <p>作業名：<%= @post_work.name %></p>
   <p>作業内容：<%= @post_work.work %></p>
   <p>作業区画：<%= @post_work.area %></p>
@@ -14,4 +15,27 @@
     <%=link_to "削除", project_post_work_path(@project.id, @post_work.id), method: :delete, "data-confirm" => "Are you sure you want to delete the post?" %>
   <% end %>
   </p>
+</div>
+
+<p>==================================================</p>
+
+<div>
+  <p>コメント件数：<%= @post_work.post_comments.count %></p>
+  <% @post_work.post_comments.each do |post_comment| %>
+    <p><%= post_comment.user.team %> : <%= post_comment.user.name %></p>
+    <p><%= post_comment.comment %></p>
+
+    <% if post_comment.user == current_user %>
+      <%= link_to "削除", project_post_work_post_comment_path(@project.id, @post_work.id, post_comment.id), method: :delete, "data-confirm" => "Are you sure you want to delete your comment?" %>
+    <% end %>
+
+    <p>------------------------------</p>
+  <% end %>    
+</div>
+
+<div>
+  <%= form_with model: [@project, @post_work, @post_comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
 </div>

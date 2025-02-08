@@ -2,6 +2,8 @@ class PostWork < ApplicationRecord
   belongs_to :project
   belongs_to :user
 
+  has_many :post_comments, dependent: :destroy
+
   validates :name, presence: true
   validates :work, presence: true
   validates :area, presence: true
