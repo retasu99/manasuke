@@ -1,0 +1,19 @@
+<h1>検索結果</h1>
+
+<% if @range == "User" %>
+
+  <% @users.each do |user| %>
+    <p>所属部署 : <%= user.team %></p>
+    <%= link_to "#{user.name}", user_path(user.id) %>
+    <p>------------------------------</p>
+  <% end %>
+
+<% else %>
+
+  <% @post_works.each do |post_work| %>
+    <p>プロジェクト : <%= post_work.project.name %></p>
+    <p><%= link_to "#{post_work.name}", project_post_work_path(post_work.project_id, post_work.id) %></p>
+    <p>------------------------------</p>
+  <% end %>
+
+<% end %>

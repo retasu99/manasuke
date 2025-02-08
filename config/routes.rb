@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'searches/search'
   devise_for :users
 
   # get 'users/show'
@@ -13,6 +14,8 @@ Rails.application.routes.draw do
 
   # get 'homes/top'
   root to: "homes#top"
+
+  get "search" => "searches#search"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
