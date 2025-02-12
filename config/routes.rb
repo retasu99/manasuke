@@ -1,20 +1,23 @@
 Rails.application.routes.draw do
 
-  get 'searches/search'
+  namespace :admin do
+    get 'dashboards/index'
+  end
+  devise_for :admin, skip: [:registrations, :password], controllers: {
+    sessions: 'admin/sessions'
+  }
+
+
   devise_for :users
 
-  # get 'users/show'
-  # get 'users/edit'
   resources :users, only: [:index, :show, :edit, :update, :destroy]
 
-  # get 'projects/index'
   resources :projects, only: [:index] do
     resources :post_works do
       resources :post_comments, only: [:create, :destroy]
     end
   end
 
-  # get 'homes/top'
   root to: "homes#top"
 
   get "search" => "searches#search"
