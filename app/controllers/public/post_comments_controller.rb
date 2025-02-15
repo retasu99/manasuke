@@ -1,4 +1,4 @@
-class PostCommentsController < ApplicationController
+class Public::PostCommentsController < ApplicationController
 
   def create
     post_comment = PostComment.new(post_comment_params)
