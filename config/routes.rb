@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'dashboards/index'
     resources :users, only: [:index, :show, :destroy]
+    resources :projects, only: [:index, :create, :destroy]
   end
   devise_for :admin, skip: [:registrations, :password], controllers: {
     sessions: 'admin/sessions'
