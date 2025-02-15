@@ -12,7 +12,8 @@
 
   <body>
 
-    <header>
+    <div class="header row bg-dark py-3">
+    
       <% if user_signed_in? %>
         <li>
           <%= link_to "プロジェクト一覧", projects_path %>
@@ -35,17 +36,24 @@
         <% end %>
 
       <% else %>
-        <li>
-          <%= link_to "新規登録", new_user_registration_path %>
-        </li>
+
+      <div class="col-5 offset-3">
+
+        <%= link_to new_user_registration_path, class: 'text-light text-decoration-none' do %>
+          <span class="px-2"><i class="fa-solid fa-house"></i> 新規登録 </span>
+        <% end %>
+
         <li>
           <%= link_to "ログイン", new_user_session_path %>
         </li>
+
         <li>
           <%= link_to "管理者としてログイン", new_admin_session_path %>
         </li>
+
+      </div>
       <% end %>
-    </header>
+    </div>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
