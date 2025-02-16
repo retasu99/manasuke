@@ -7,15 +7,21 @@
   <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
+
 <body>
-  <% if admin_signed_in? %>
-    <li>
-      <%= link_to '管理者トップページへ', admin_dashboards_index_path %>
-    </li>
-    <li>
-      <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
-    </li>
-  <% end %>
+
+  <div class="header-admin row bg-dark py-3">
+    <% if admin_signed_in? %>
+      <div class= "col-3 offset-9">
+        <%= link_to admin_dashboards_index_path, class: 'text-light' do %>
+          <span class="px-2"> 管理者トップページへ </span>
+        <% end %>
+        <%= link_to destroy_admin_session_path, method: :delete, class: 'text-light' do %>
+          <span class="px-2"> ログアウト </span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
   <p class="notice"><%= notice %></p>
 

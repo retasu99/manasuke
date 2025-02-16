@@ -15,43 +15,45 @@
     <div class="header row bg-dark py-3">
     
       <% if user_signed_in? %>
-        <li>
-          <%= link_to "プロジェクト一覧", projects_path %>
-        </li>
-        <li>
-          <%= link_to "ユーザー一覧", users_path %>
-        </li>
-        <li>
-          <%= link_to "マイページ", user_path(current_user.id) %>
-        </li>
-        <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        </li>
 
-        <%= form_with url: search_path, local: true, method: :get do |f| %>
-          <%= f.text_field :word %>
-          <%= f.select :range, options_for_select([['PostWork'], ['User']]) %>
-          <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"], ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
-          <%= f.submit "検索" %>
-        <% end %>
+        <div class="col-5 offset-2">
+          <%= form_with url: search_path, local: true, method: :get do |f| %>
+            <%= f.text_field :word, size: 30, placeholder: '作業名もしくはユーザー名を入力' %>
+            <%= f.select :range, options_for_select([['PostWork'], ['User']]) %>
+            <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"], ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+            <%= f.submit "検索" %>
+          <% end %>
+        </div>
+
+        <div class="col-4 offset-1">
+          <%= link_to projects_path, class: 'text-light' do %>
+            <span class="px-2"> プロジェクト一覧 </span>
+          <% end %>
+          <%= link_to users_path, class: 'text-light' do %>
+            <span class="px-2"> ユーザー一覧 </span>
+          <% end %>
+          <%= link_to user_path(current_user.id), class: 'text-light' do %>
+            <span class="px-2"> マイページ </span>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete, class: 'text-light' do %>
+            <span class="px-2"> ログアウト </span>
+          <% end %>
+        </div>
 
       <% else %>
 
-      <div class="col-5 offset-3">
-
-        <%= link_to new_user_registration_path, class: 'text-light text-decoration-none' do %>
-          <span class="px-2"><i class="fa-solid fa-house"></i> 新規登録 </span>
+      <div class="col-5 offset-9">
+        <%= link_to new_user_registration_path, class: 'text-light' do %>
+          <span class="px-2"> 新規登録 </span>
         <% end %>
-
-        <li>
-          <%= link_to "ログイン", new_user_session_path %>
-        </li>
-
-        <li>
-          <%= link_to "管理者としてログイン", new_admin_session_path %>
-        </li>
-
+        <%= link_to new_user_session_path, class: 'text-light' do %>
+          <span class="px-2"> ログイン </span>
+        <% end %>
+        <%= link_to new_admin_session_path, class: 'text-light' do %>
+          <span class="px-2"> 管理者としてログイン </span>
+        <% end %>
       </div>
+
       <% end %>
     </div>
 
