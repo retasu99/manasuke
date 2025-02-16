@@ -1,4 +1,6 @@
-<h2>Log in</h2>
+<div class="log_in text-center">
+
+<h2>ログインフォーム</h2>
 
 <%= form_with model: @user, url: user_session_path do |f| %>
   <div class="field">
@@ -19,8 +21,10 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", class: 'btn btn-primary' %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>

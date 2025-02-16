@@ -1,4 +1,8 @@
-<h2>Log in</h2>
+<div class="admin_log_in text-center">
+
+<br>
+<br>
+<h2>管理者ログインフォーム</h2>
 
 <%= form_with model: @admin, url: session_path(resource_name), local: true do |f| %>
   <div class="field">
@@ -19,8 +23,10 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", class: 'btn btn-info' %>
   </div>
 <% end %>
 
 <%= render "admin/shared/links" %>
+
+</div>
