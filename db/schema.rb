@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_02_12_120426) do
+ActiveRecord::Schema.define(version: 2025_02_19_065624) do
+
+  create_table "acknowledgements", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_work_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
