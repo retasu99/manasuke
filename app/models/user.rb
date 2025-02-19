@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :post_works, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  has_many :acknowledgement, dependent: :destroy
 
   validates :team, presence: true
   validates :name, presence: true

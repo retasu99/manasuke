@@ -11,19 +11,18 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
+
     devise_for :users
-
     resources :users, only: [:index, :show, :edit, :update, :destroy]
-
     resources :projects, only: [:index] do
       resources :post_works do
         resources :post_comments, only: [:create, :destroy]
+        resource :acknowledgement, only: [:create, :destroy]
       end
     end
-
     root to: "homes#top"
-
     get "search" => "searches#search"
+    
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

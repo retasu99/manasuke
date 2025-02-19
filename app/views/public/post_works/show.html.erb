@@ -9,6 +9,23 @@
   <p>作業終了日時：<%= @post_work.end_time %></p>
   <p>作業責任者：<%= link_to "#{@post_work.user.name}", user_path(@post_work.user.id) %></p>
 
+  <p><%= @post_work.acknowledgements.count %>人が承認しました</p> 
+  <% unless @post_work.user == current_user %>
+    <% if @post_work.acknowledged_by?(current_user) %>
+      <p>
+        <%= link_to project_post_work_acknowledgement_path(@project.id, @post_work.id), method: :delete do %>
+          ☑承認済
+        <% end %>
+      </p>
+    <% else %>
+      <p>
+        <%= link_to project_post_work_acknowledgement_path(@project.id, @post_work.id), method: :post do %>
+          ☐承認しますか？
+        <% end %>
+      </p>
+    <% end %>
+  <% end %>
+
   <p>
   <% if @post_work.user == current_user %>
     <%=link_to "編集", edit_project_post_work_path(@project.id, @post_work.id) %> | 

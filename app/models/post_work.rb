@@ -3,6 +3,7 @@ class PostWork < ApplicationRecord
   belongs_to :user
 
   has_many :post_comments, dependent: :destroy
+  has_many :acknowledgements, dependent: :destroy
 
   validates :name, presence: true
   validates :work, presence: true
@@ -22,5 +23,9 @@ class PostWork < ApplicationRecord
     else 
       @post_work = PostWork.all
     end
+  end
+
+  def acknowledged_by?(user)
+    acknowledgements.exists?(user_id: user.id)
   end
 end
