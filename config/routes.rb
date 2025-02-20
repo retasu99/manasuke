@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   scope module: :public do
 
     devise_for :users
-    resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :users, only: [:index, :show, :edit, :update, :destroy] do
+      member do
+        get :acknowledges
+      end
+    end
     resources :projects, only: [:index] do
       resources :post_works do
         resources :post_comments, only: [:create, :destroy]

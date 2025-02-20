@@ -4,6 +4,7 @@ class PostWork < ApplicationRecord
 
   has_many :post_comments, dependent: :destroy
   has_many :acknowledgements, dependent: :destroy
+  has_many :acknowledged_users, through: :acknowledgements, source: :user
 
   validates :name, presence: true
   validates :work, presence: true

@@ -32,6 +32,10 @@ class Public::UsersController < ApplicationController
     redirect_to :root
   end
 
+  def acknowledges
+    @post_work = PostWork.find(params[:id])
+  end
+
   private
 
   def user_params
