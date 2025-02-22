@@ -1,0 +1,9 @@
+<h2>フォロワーリスト</h2>
+
+<% if @user.followers.present? %>
+  <% @user.followers.each do |follower| %>
+    <p><%= link_to "#{follower.name}", user_path(follower.id) %></p>
+  <% end %>
+<% else %>
+  <h3>フォロワーはいません</h3>
+<% end %>

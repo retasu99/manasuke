@@ -11,7 +11,26 @@
       <%= link_to "プロフィール編集", edit_user_path(current_user.id) %> | 
       <%= link_to "退会処理", user_path(current_user.id), method: :delete, "data-confirm" => "Are you sure you want to cancel your membership?" %>
     </p>
+  
+  <% else %>
+    <% if @user.followed_by?(current_user) %>
+    <p>
+      <%= link_to user_relationship_path(@user), method: :delete do %>
+        フォロー中
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to user_relationship_path(@user), method: :post do %>
+        フォローする
+      <% end %>
+    </p>
+    <% end %>
   <% end %>
+
+  <%= link_to "フォローリスト", following_users_user_path(@user.id) %> |
+  <%= link_to "フォロワーリスト", followers_user_path(@user.id) %>
+
 </div>
 
 <p>===========================================================</p>

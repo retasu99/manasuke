@@ -14,8 +14,13 @@ Rails.application.routes.draw do
 
     devise_for :users
     resources :users, only: [:index, :show, :edit, :update, :destroy] do
+      resource :relationship, only: [:create, :destroy]
+#      get "following_users" => "relationships#following_users"
       member do
-        get :acknowledges
+        get :acknowledged_users
+        get :following_users
+        get :followers
+#        get "acknowledges" => "acknowledgements#acknowledges", as: "acknowledges"
       end
     end
     resources :projects, only: [:index] do

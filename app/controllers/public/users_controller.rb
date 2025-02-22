@@ -32,8 +32,16 @@ class Public::UsersController < ApplicationController
     redirect_to :root
   end
 
-  def acknowledges
+  def acknowledged_users
     @post_work = PostWork.find(params[:id])
+  end
+
+  def following_users
+    @user = User.find(params[:id])
+  end
+
+  def followers
+    @user = User.find(params[:id])
   end
 
   private
