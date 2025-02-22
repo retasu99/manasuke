@@ -10,7 +10,10 @@
   <p>作業責任者：<%= link_to "#{@post_work.user.name}", user_path(@post_work.user.id) %></p>
 
   <p><%= @post_work.acknowledgements.count %>人が承認しました</p>
-  <p><%= link_to "承認した人リスト", acknowledges_user_path %></p>
+  <p>
+    <%= link_to "承認した人リスト", acknowledged_users_user_path %>
+    <%#= link_to "承認した人リスト", user_acknowledges_path #%>
+  </p>
 
   <% unless @post_work.user == current_user %>
     <% if @post_work.acknowledged_by?(current_user) %>

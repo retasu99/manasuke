@@ -8,6 +8,12 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :acknowledgement, dependent: :destroy
 
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+
+  has_many :following_users, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
+
   validates :team, presence: true
   validates :name, presence: true
   validates :telephone_number, presence: true
@@ -24,5 +30,9 @@ class User < ApplicationRecord
     else
       @user = User.all
     end
+  end
+
+  def followed_by?(user)
+    passive_relationships.exists?(follower_id: user.id)
   end
 end
