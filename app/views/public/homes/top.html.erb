@@ -11,3 +11,23 @@
   </p>
 
 </div>
+
+<div class="log-in-button offset-4">
+  <%= link_to new_user_session_path do %>
+    <button type="button" class="btn btn-primary w-50 mt-3"> ログイン </button>
+  <% end %>
+</div>
+
+<div class="sign-up-button offset-4">
+  <%= link_to new_user_registration_path do %>
+    <button type="button" class="btn btn-info w-50 mt-3"> 新規登録 </button>
+  <% end %>
+</div>
+<br>
+<br>
+<br>
+<div class="guest-log-in-button offset-4">
+  <%= link_to homes_guest_sign_in_path, method: :post do %>
+    <button type="button" class="btn btn-warning w-50 mt-3"> ゲストログイン(閲覧用) </button>
+  <% end %>
+</div>
