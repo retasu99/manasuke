@@ -6,6 +6,8 @@ class PostWork < ApplicationRecord
   has_many :acknowledgements, dependent: :destroy
   has_many :acknowledged_users, through: :acknowledgements, source: :user
 
+  has_one :notification, as: :subject, dependent: :destroy
+
   validates :name, presence: true
   validates :work, presence: true
   validates :area, presence: true
