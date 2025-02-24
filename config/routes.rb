@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   scope module: :public do
 
+    root to: "homes#top"
     devise_for :users
+    post '/homes/guest_sign_in', to: 'homes#new_guest'
     resources :users, only: [:index, :show, :edit, :update, :destroy] do
       resource :relationship, only: [:create, :destroy]
       member do
@@ -27,7 +29,7 @@ Rails.application.routes.draw do
         resource :acknowledgement, only: [:create, :destroy]
       end
     end
-    root to: "homes#top"
+
     get "search" => "searches#search"
     resources :notifications, only: [:index, :destroy]
     
