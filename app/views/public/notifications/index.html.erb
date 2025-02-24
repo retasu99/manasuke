@@ -1,0 +1,11 @@
+<h3>通知</h3>
+
+<% if @notifications.present? %>
+  <%= link_to "全削除", notification_path(@notifications), method: :delete %>
+  <% @notifications.each do |notification| %>
+    <%= render partial: notification.action_type, locals: { notification: notification } %>
+  <% end %>
+
+<% else %>
+  通知はありません
+<% end %>

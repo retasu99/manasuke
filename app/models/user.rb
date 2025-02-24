@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :following_users, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_many :notifications, dependent: :destroy
+
   validates :team, presence: true
   validates :name, presence: true
   validates :telephone_number, presence: true
