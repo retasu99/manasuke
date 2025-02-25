@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/e3698def12.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -32,6 +32,16 @@
         </div>
 
         <div class="col-5">
+
+        <%= link_to notifications_path, class: 'text-light' do %>
+          <% if current_user.notifications.where(checked: false).exists? %>
+            <i class="fa-sharp fa-solid fa-bell" style="color: #FF0000"></i>
+          <% else %>
+            <i class="fa-sharp fa-solid fa-bell"></i>
+          <% end %>
+          通知一覧
+        <% end %>
+
           <%= link_to projects_path, class: 'text-light' do %>
             <span class="px-2"> プロジェクト一覧 </span>
           <% end %>
@@ -40,9 +50,6 @@
           <% end %>
           <%= link_to user_path(current_user.id), class: 'text-light' do %>
             <span class="px-2"> マイページ </span>
-          <% end %>
-          <%= link_to notifications_path, class: 'text-light' do %>
-            <span class="px-2"> 通知一覧 </span>
           <% end %>
           <%= link_to destroy_user_session_path, method: :delete, class: 'text-light' do %>
             <span class="px-2"> ログアウト </span>
