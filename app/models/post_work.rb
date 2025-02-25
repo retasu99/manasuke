@@ -7,6 +7,7 @@ class PostWork < ApplicationRecord
   has_many :acknowledged_users, through: :acknowledgements, source: :user
 
   has_one :notification, as: :subject, dependent: :destroy
+  after_create_commit :create_notifications
 
   validates :name, presence: true
   validates :work, presence: true
@@ -31,4 +32,14 @@ class PostWork < ApplicationRecord
   def acknowledged_by?(user)
     acknowledgements.exists?(user_id: user.id)
   end
+
+  
+  private
+
+  def create_notifications
+    self.user.followers.each do |follower|
+      Notification.create(subject: self, user: follower, action_type: 3)
+    end
+  end
+  
 end
