@@ -38,7 +38,7 @@ end
 Project.find_or_create_by!(name: "project-01")
 Project.find_or_create_by!(name: "project-02")
 
-30.times{|i|PostWork.find_or_create_by!(project_id: "1", user_id: "1", name: "test#{i}", work: "test_work#{i}", area: "test_area#{i}", start_time: Time.current.since(i*2.days), end_time: Time.current.since(i*2.days))}
+30.times{|i|PostWork.find_or_create_by!(project_id: "1", user_id: "2", name: "test#{i}", work: "test_work#{i}", area: "test_area#{i}", start_time: Time.current.since(i*2.days), end_time: Time.current.since(i*2.days))}
 
 
 puts "seedの実行が完了しました"
