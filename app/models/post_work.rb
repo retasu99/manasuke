@@ -38,8 +38,29 @@ class PostWork < ApplicationRecord
 
   def create_notifications
     self.user.followers.each do |follower|
-      Notification.create(subject: self, user: follower, action_type: 3)
+      notification = Notification.new
+      notification.subject = self
+      notification.user_id = follower.id
+      notification.action_type = 3
+      notification.save
     end
+
+    self.user.following_users.each do |followed|
+      notification = Notification.new
+      notification.subject = self
+      notification.user_id = followed.id
+      notification.action_type = 3
+
+      self.user.following_users.each do |follower|
+        if Notification.exists?(subject: self, user: follower, action_type: 3)
+          next
+        else
+          notification.save
+        end
+      end
+
+    end
+
   end
   
 end
