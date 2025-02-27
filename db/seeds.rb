@@ -41,8 +41,10 @@ example = Admin.find_or_create_by!(email: "admin@example.com") do |admin|
   admin.password = "adminpasuwado"
 end
 
-Project.find_or_create_by!(name: "project-01")
-Project.find_or_create_by!(name: "project-02")
+5.times{|i|Project.find_or_create_by!(name: "project-#{i}")}
+Project.find_or_create_by!(name: "すごいproject")
+Project.find_or_create_by!(name: "絶対成功させたいproject")
+Project.find_or_create_by!(name: "失敗したら弊社が潰れるproject")
 
 30.times{|i|PostWork.find_or_create_by!(project_id: "1", user_id: "2", name: "work#{i}", work: "test_work#{i}", area: "test_area#{i}", start_time: Time.current.since(i*2.days), end_time: Time.current.since(i*2.days))}
 
