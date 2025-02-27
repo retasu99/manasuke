@@ -1,9 +1,23 @@
-<h2>フォロー中リスト</h2>
+<h2>※新規投稿時 フォロー/フォロワー すべてのユーザーへ通知されます</h2>
+
+<h3>フォロー中リスト</h3>
 
 <% if @user.following_users.present? %>
   <% @user.following_users.each do |following_user| %>
     <p><%= link_to "#{following_user.name}", user_path(following_user.id) %></p>
   <% end %>
 <% else %>
-  <h3>フォローしているユーザーはいません</h3>
+  <h4>フォローしているユーザーはいません</h4>
+<% end %>
+
+<p>----------------------------------------------------</p>
+
+<h3>フォロワーリスト</h3>
+
+<% if @user.followers.present? %>
+  <% @user.followers.each do |follower| %>
+    <p><%= link_to "#{follower.name}", user_path(follower.id) %></p>
+  <% end %>
+<% else %>
+  <h4>フォロワーはいません</h4>
 <% end %>
