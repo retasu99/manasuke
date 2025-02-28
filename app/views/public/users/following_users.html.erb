@@ -1,23 +1,50 @@
+<div class="container text-center">
 <h2>※新規投稿時 フォロー/フォロワー すべてのユーザーへ通知されます</h2>
 
-<h3>フォロー中リスト</h3>
+<div class="row">
+<div class="col">
+  <h3>~フォロー中リスト~</h3>
 
-<% if @user.following_users.present? %>
-  <% @user.following_users.each do |following_user| %>
-    <p><%= link_to "#{following_user.name}", user_path(following_user.id) %></p>
+  <% if @user.following_users.present? %>
+    <table class="table">
+      <tr>
+        <th>所属</th>
+        <th>氏名</th>
+      </tr>
+      <% @user.following_users.each do |following_user| %>
+        <tr>
+          <td><%= "#{following_user.team}" %></td>
+          <td><%= link_to "#{following_user.name}", user_path(following_user.id) %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <h4>フォローしているユーザーはいません</h4>
   <% end %>
-<% else %>
-  <h4>フォローしているユーザーはいません</h4>
-<% end %>
+</div>
 
-<p>----------------------------------------------------</p>
+<div class="col">
+  <h3>~フォロワーリスト~</h3>
 
-<h3>フォロワーリスト</h3>
+  <% if @user.followers.present? %>
+    <table class="table">
+      <tr>
+      <th>所属</th>
+      <th>氏名</th>
+      </tr>
 
-<% if @user.followers.present? %>
-  <% @user.followers.each do |follower| %>
-    <p><%= link_to "#{follower.name}", user_path(follower.id) %></p>
+      <% @user.followers.each do |follower| %>
+        <tr>
+          <td><%= "#{follower.team}" %></td>
+          <td><%= link_to "#{follower.name}", user_path(follower.id) %></td>
+        </tr>
+      <% end %>
+
+    </table>
+  <% else %>
+    <h4>フォロワーはいません</h4>
   <% end %>
-<% else %>
-  <h4>フォロワーはいません</h4>
-<% end %>
+</div>
+
+</div>
+</div>

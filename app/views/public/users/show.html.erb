@@ -1,42 +1,65 @@
-<h1>ユーザープロフィール</h1>
+<div class="row">
 
-<div>
-  <p>氏名：<%= @user.name %></p>
-  <p>所属：<%= @user.team %></p>
-  <p>電話番号：<%= @user.telephone_number %></p>
-  <p>メールアドレス：<%= @user.email %></p>
+  <div class="col-lg-7 text-center">
+    <h1>ユーザープロフィール</h1>
 
-  <% if @user == current_user %>
-    <p>
-      <%= link_to "プロフィール編集", edit_user_path(current_user.id) %> | 
-      <%= link_to "退会処理", user_path(current_user.id), method: :delete, "data-confirm" => "Are you sure you want to cancel your membership?" %>
-    </p>
-  
-  <% else %>
+    <div class="row">
+      <table class="table">
+        <tr>
+          <th>氏名</th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th>所属</th>
+          <td><%= @user.team %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @user.telephone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+      </table>
+    </div>
 
-    <%= render partial: "public/relationships/relationship", locals: { user: @user } %>
+    <div class="row d-flex justify-content-center">
+      <ul class="list-unstyled">
+        <li><%= link_to "フォロー/フォロワーリスト", following_users_user_path(@user.id) %></li>
+        <br>
 
-  <% end %>
+        <% if @user == current_user %>
+          <li><%= link_to "プロフィール編集", edit_user_path(current_user.id) %></li>
+          <li><%= link_to "退会処理", user_path(current_user.id), method: :delete, "data-confirm" => "本当に退会しますか?" %></li>
+        <% else %>
+          <li><%= render partial: "public/relationships/relationship", locals: { user: @user } %></li>
+        <% end %>
+      </ul>
+    </div>
 
-  <%= link_to "フォロー/フォロワーリスト", following_users_user_path(@user.id) %>
-
-</div>
-
-<p>===========================================================</p>
-
-<h2>投稿一覧</h2>
-
-<% @post_works.each do |post_work| %>
-
-  <div>
-    <p>プロジェクト名：
-      <%= link_to "#{post_work.project.name}", project_post_works_path(post_work.project_id) %>
-    </p>
-    <p>作業名：
-      <%= link_to "#{post_work.name}", project_post_work_path(post_work.project_id, post_work.id) %>
-    </p>
-    <p>作業開始日時：<%= l post_work.start_time, format: :short %></p>
   </div>
 
-  <p>----------------------------------------</p>
-<% end %>
+  <div class="col-lg-5">
+
+  <h2>投稿一覧</h2>
+  <p>==============================</p>
+
+  <% @post_works.each do |post_work| %>
+
+    <div>
+      <p>プロジェクト名：
+        <%= link_to "#{post_work.project.name}", project_post_works_path(post_work.project_id) %>
+      </p>
+      <p>作業名：
+        <%= link_to "#{post_work.name}", project_post_work_path(post_work.project_id, post_work.id) %>
+      </p>
+      <p>作業開始日時：<%= l post_work.start_time, format: :short %></p>
+    </div>
+
+    <p>----------------------------------------</p>
+  <% end %>
+
+  </div>
+</div>
+
