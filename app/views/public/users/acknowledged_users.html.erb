@@ -1,32 +1,29 @@
 <div class="container text-center">
 <h2>承認したユーザー</h2>
 
-<% if @post_work.acknowledged_users.present? %>
+  <% if @post_work.acknowledged_users.present? %>
 
-  <table class="table">
-    <tr>
-      <th>所属</th>
-      <th>氏名</th>
-      <th>承認した日時</th>
-    </tr>
+    <table class="table">
+      <tr>
+        <th>所属</th>
+        <th>氏名</th>
+        <th>承認した日時</th>
+      </tr>
 
-
-
-  <% @acknowledgements.each do |acknowledgement| %>
-    <% if acknowledgement.post_work.id == @post_work.id %>
-    <tr>
-      <td><%= acknowledgement.user.team %></td>
-      <td><%= link_to "#{acknowledgement.user.name}", user_path(acknowledgement.user_id) %></td>
-      <td>
-        <%= l acknowledgement.created_at, format: :short %>
-      </td>
-    </tr>
-    <% end %>
+      <% @acknowledgements.each do |acknowledgement| %>
+        <% if acknowledgement.post_work.id == @post_work.id %>
+        <tr>
+          <td><%= acknowledgement.user.team %></td>
+          <td><%= link_to "#{acknowledgement.user.name}", user_path(acknowledgement.user_id) %></td>
+          <td>
+            <%= l acknowledgement.created_at, format: :short %>
+          </td>
+        </tr>
+        <% end %>
+      <% end %>
+    </table>
+  <% else %>
+    <h3>承認したユーザーはいません</h3>
   <% end %>
-  
-  </table>
-<% else %>
-  <h3>承認したユーザーはいません</h3>
-<% end %>
 
 </div>

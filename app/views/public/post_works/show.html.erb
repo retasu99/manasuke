@@ -1,52 +1,105 @@
+<div class="container text-center"> 
 <h1>作業詳細</h1>
 
-<div>
-  <p>プロジェクト名：<%= link_to "#{@post_work.project.name}", project_post_works_path(@project.id) %></p>
-  <p>作業名：<%= @post_work.name %></p>
-  <p>作業内容：<%= @post_work.work %></p>
-  <p>作業区画：<%= @post_work.area %></p>
-  <p>作業開始日時：<%= l @post_work.start_time, format: :short %></p>
-  <p>作業終了日時：<%= l @post_work.end_time, format: :short %></p>
-  <p>作業責任者：<%= link_to "#{@post_work.user.name}", user_path(@post_work.user.id) %></p>
+  <div class="row">
+    <div class="col-lg-8 text-center">
+      <div class="row">
+        <table class="table">
+          <tr>
+            <th>プロジェクト名</th>
+            <td><%= link_to "#{@post_work.project.name}", project_post_works_path(@project.id) %></td>
+          </tr>
+          <tr>
+            <th>作業名</th>
+            <td><%= @post_work.name %></td>
+          </tr>
+          <tr>
+            <th>作業内容</th>
+            <td><p><%= @post_work.work %></p></td>
+          </tr>
+          <tr>
+            <th>作業区画</th>
+            <td><%= @post_work.area %></td>
+          </tr>
+          <tr>
+            <th>作業開始日時</th>
+            <td><%= l @post_work.start_time, format: :short %></td>
+          </tr>
+          <tr>
+            <th>作業終了日時</th>
+            <td><%= l @post_work.end_time, format: :short %></td>
+          </tr>
+          <tr>
+            <th>作業責任者</th>
+            <td><%= link_to "#{@post_work.user.name}", user_path(@post_work.user.id) %></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="row d-flex justify-content-center">
+
+        <ul class="list-unstyled">
+          <li>
+          <%= link_to acknowledged_users_user_path do %>
+            <button type="button" class="btn btn-outline-dark">
+              承認した人リスト
+            </button>
+          <% end %>
+          </li>
+          <br>
+
+          <% unless @post_work.user == current_user %>
+          <li>
+            <%= render partial: "public/acknowledgements/acknowledgement", locals: { post_work:@post_work } %>
+          </li>
+          <% end %>
+          <% if @post_work.user == current_user %>
+            <li>
+              <%=link_to edit_project_post_work_path(@project.id, @post_work.id) do %>
+                <button type="button" class="btn btn-outline-dark">
+                  編集
+                </button>
+              <% end %>
+            </li>
+            <br>
+            <li>
+              <%=link_to project_post_work_path(@project.id, @post_work.id), method: :delete, "data-confirm" => "本当に削除してよろしいですか?" do %>
+                <button type="button" class="btn btn-outline-dark">
+                  削除
+                </button>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
 
 
-  <p>
-    <%= link_to "承認した人リスト", acknowledged_users_user_path %>
-  </p>
 
-  <% unless @post_work.user == current_user %>
+    <div class="col-lg-4 text-center">
+      <h3>コメント件数：<%= @post_work.post_comments.count %></h3>
+      <p>-----------------------------------------------------</p>
+      <% @post_work.post_comments.each do |post_comment| %>
+        <p>投稿者 : <%= post_comment.user.name %></p>
+        <p><%= post_comment.comment %></p>
 
-    <%= render partial: "public/acknowledgements/acknowledgement", locals: { post_work:@post_work } %>
+        <% if post_comment.user == current_user %>
+          <%= link_to project_post_work_post_comment_path(@project.id, @post_work.id, post_comment.id), method: :delete, "data-confirm" => "コメントを削除します。よろしいですか?" do %>
+            <button type="button" class="btn btn-outline-dark">
+              削除
+            </button>
+          <% end %>
+        <% end %>
+        <p>-----------------------------------------------------</p>
+      <% end %>
 
-  <% end %>
 
-  <p>
-  <% if @post_work.user == current_user %>
-    <%=link_to "編集", edit_project_post_work_path(@project.id, @post_work.id) %> | 
-    <%=link_to "削除", project_post_work_path(@project.id, @post_work.id), method: :delete, "data-confirm" => "Are you sure you want to delete the post?" %>
-  <% end %>
-  </p>
-</div>
 
-<p>==================================================</p>
-
-<div>
-  <p>コメント件数：<%= @post_work.post_comments.count %></p>
-  <% @post_work.post_comments.each do |post_comment| %>
-    <p><%= post_comment.user.team %> : <%= post_comment.user.name %></p>
-    <p><%= post_comment.comment %></p>
-
-    <% if post_comment.user == current_user %>
-      <%= link_to "削除", project_post_work_post_comment_path(@project.id, @post_work.id, post_comment.id), method: :delete, "data-confirm" => "Are you sure you want to delete your comment?" %>
+    <%= form_with model: [@project, @post_work, @post_comment] do |f| %>
+      <%= f.text_area :comment, cols: '30', placeholder: "コメントをここに" %>
+      <%= f.submit "送信する" %>
     <% end %>
+    </div>
 
-    <p>------------------------------</p>
-  <% end %>    
-</div>
-
-<div>
-  <%= form_with model: [@project, @post_work, @post_comment] do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
+  </div>
 </div>
