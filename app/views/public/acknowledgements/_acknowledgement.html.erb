@@ -1,16 +1,16 @@
 <div class="acknowledgements_buttons">
-<% if @post_work.acknowledged_by?(current_user) %>
-  <p>
-    <%= link_to project_post_work_acknowledgement_path(@project.id, @post_work.id), method: :delete, remote: true do %>
-      承認済<i class="fa-solid fa-thumbs-up"></i>
-    <% end %>
-  </p>
-<% else %>
-  <p>
-    <%= link_to project_post_work_acknowledgement_path(@project.id, @post_work.id), method: :post, remote: true do %>
-      クリックして承認
-    <% end %>
-  </p>
-<% end %>
-<p><%= @post_work.acknowledgements.count %>人が承認しました</p>
+  <% if @post_work.acknowledged_by?(current_user) %>
+    <p>
+      <%= link_to project_post_work_acknowledgement_path(@project.id, @post_work.id), method: :delete, remote: true do %>
+        承認済<i class="fa-solid fa-thumbs-up"></i>
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to project_post_work_acknowledgement_path(@project.id, @post_work.id), method: :post, remote: true do %>
+        クリックして承認
+      <% end %>
+    </p>
+  <% end %>
+  <p><%= @post_work.acknowledgements.count %>人が承認しました</p>
 </div>

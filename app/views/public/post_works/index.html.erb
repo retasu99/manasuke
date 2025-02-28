@@ -1,16 +1,20 @@
-<h1><%= @project.name %>  作業予定</h1>
+<div class="container text-center">
 
-<%= link_to "新規投稿", new_project_post_work_path(@project.id) %>
+  <h1><%= @project.name %>  作業予定</h1>
 
-<p>================================================================</p>
+  <%= link_to "新規投稿", new_project_post_work_path(@project.id) %>
 
-<h2>month</h2>
+  <p>================================================================</p>
 
-<div>
-  <%= month_calendar events: @project.post_works do |date, post_works| %>
-    <%= date.day %><br>
-    <% post_works.each do |post_work| %>
-      <p><%= link_to "#{post_work.name}", project_post_work_path(@project.id, post_work.id) %></p>
+  <h2>month</h2>
+
+  <div>
+    <%= month_calendar events: @project.post_works do |date, post_works| %>
+      <%= date.day %><br>
+      <% post_works.each do |post_work| %>
+        <p><%= link_to "#{post_work.name}", project_post_work_path(@project.id, post_work.id) %></p>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+
 </div>

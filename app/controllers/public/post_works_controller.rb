@@ -40,7 +40,7 @@ class Public::PostWorksController < ApplicationController
     @post_work = PostWork.find(params[:id])
 
     if @post_work.update(post_work_params)
-      redirect_to project_post_works_path
+      redirect_to project_post_work_path(@project.id, @post_work.id)
     else
       render :edit
     end
@@ -50,7 +50,7 @@ class Public::PostWorksController < ApplicationController
   def destroy
     post_work = PostWork.find(params[:id])
     post_work.destroy
-    flash[:notice] = "Deleted your post successfully."
+    flash[:notice] = "削除しました."
     redirect_to project_post_works_path
   end
 

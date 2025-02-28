@@ -1,19 +1,38 @@
+<div class="container text-center">
 <h1>検索結果</h1>
 
-<% if @range == "User" %>
+  <% if @range == "User" %>
+    <table class="table">
+      <tr>
+        <th>所属</th>
+        <th>氏名</th>
+      </tr>
 
-  <% @users.each do |user| %>
-    <p>所属部署 : <%= user.team %></p>
-    <%= link_to "#{user.name}", user_path(user.id) %>
-    <p>------------------------------</p>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.team %></td>
+          <td><%= link_to "#{user.name}", user_path(user.id) %></td>
+        </tr>
+      <% end %>
+    </table>
+
+  <% else %>
+
+    <table class="table">
+      <tr>
+        <th>プロジェクト名</th>
+        <th>作業名</th>
+        <th>作業開始日時</th>
+      </tr>
+
+      <% @post_works.each do |post_work| %>
+        <tr>
+          <td><%= link_to "#{post_work.project.name}", project_post_works_path(post_work.project_id) %></td>
+          <td><%= link_to "#{post_work.name}", project_post_work_path(post_work.project_id, post_work.id) %></td>
+          <td><%= l post_work.start_time, format: :short %></td>
+        </tr>
+      <% end %>
+    </table>
   <% end %>
 
-<% else %>
-
-  <% @post_works.each do |post_work| %>
-    <p>プロジェクト : <%= post_work.project.name %></p>
-    <p><%= link_to "#{post_work.name}", project_post_work_path(post_work.project_id, post_work.id) %></p>
-    <p>------------------------------</p>
-  <% end %>
-
-<% end %>
+</div>
