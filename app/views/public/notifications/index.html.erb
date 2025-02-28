@@ -1,11 +1,25 @@
-<h3>通知</h3>
+<div class="container text-center">
+<h1>通知一覧</h1>
 
 <% if @notifications.present? %>
-  <%= link_to "全削除(すべて確認したらクリックしてください)", notification_path(@notifications), method: :delete %>
+
+  <table class="table">
   <% @notifications.each do |notification| %>
-    <%= render partial: notification.action_type, locals: { notification: notification } %>
+    <tr>
+      <td><%= render partial: notification.action_type, locals: { notification: notification } %></td>
+      <td><%= "(#{time_ago_in_words(notification.created_at)}前)" %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <%= link_to notification_path(@notifications), method: :delete do %>
+    <button type="button" class="btn btn-outline-dark">
+      全削除(すべての通知を確認してからクリックしてください)
+    </button>
   <% end %>
 
 <% else %>
   通知はありません
 <% end %>
+
+</div>

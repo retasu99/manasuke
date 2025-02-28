@@ -28,12 +28,13 @@ class Public::UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])
     user.destroy
-    flash[:notice] = "Canceled your membership successfully."
+    flash[:notice] = "退会しました。"
     redirect_to :root
   end
 
   def acknowledged_users
     @post_work = PostWork.find(params[:id])
+    @acknowledgements = Acknowledgement.all
   end
 
   def following_users

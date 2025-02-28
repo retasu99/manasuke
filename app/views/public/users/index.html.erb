@@ -1,10 +1,42 @@
+<div class="container text-center">
+
 <h1>ユーザー一覧</h1>
 
-<% @users.each do |user| %>
-  <div>
-    <%= user.team %>
-    <%= link_to "#{user.name}", user_path(user.id) %>
-    <br>
-    <br>
-  </div>
-<% end %>
+  <table class="table">
+    <tr>
+      <th>所属</th>
+      <th>氏名</th>
+      <th>フォローしてる？</th>
+      <th>フォローされてる？</th>
+    </tr>
+
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.team %></td>
+        <td><%= link_to "#{user.name}", user_path(user.id) %></td>
+
+        <% if user == current_user %>
+          <td>ログイン中</td>
+          <td>ログイン中</td>
+        <% else %>
+          <td><%#= render partial: "public/relationships/relationship", locals: { user: user } #%>
+            <% if user.followed_by?(current_user) %>
+              フォロー中
+            <% else %>
+              フォローしていません
+            <% end %>
+          </td>
+          <td>
+            <% if current_user.followed_by?(user) %>
+              フォロワーです
+            <% else %>
+              フォロワーではありません
+            <% end %>
+          </td>
+        <% end %>
+
+      </tr>
+    <% end %>
+  </table>
+
+</div>
