@@ -79,7 +79,7 @@
       <h3>コメント件数：<%= @post_work.post_comments.count %></h3>
       <p>-----------------------------------------------------</p>
       <% @post_work.post_comments.each do |post_comment| %>
-        <p>投稿者 : <%= post_comment.user.name %></p>
+        <p>投稿者 : <%= link_to "#{post_comment.user.name}", user_path(post_comment.user.id) %></p>
         <p><%= post_comment.comment %></p>
 
         <% if post_comment.user == current_user %>
@@ -92,12 +92,12 @@
         <p>-----------------------------------------------------</p>
       <% end %>
 
-
-
-    <%= form_with model: [@project, @post_work, @post_comment] do |f| %>
-      <%= f.text_area :comment, cols: '30', placeholder: "コメントをここに" %>
-      <%= f.submit "送信する" %>
-    <% end %>
+      <% unless @post_work.user == current_user %>
+        <%= form_with model: [@project, @post_work, @post_comment] do |f| %>
+          <%= f.text_area :comment, cols: '30', placeholder: "コメントをここに" %>
+          <%= f.submit "送信する" %>
+        <% end %>
+      <% end %>
     </div>
 
   </div>

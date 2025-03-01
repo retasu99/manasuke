@@ -1,6 +1,5 @@
 class Admin::ProjectsController < ApplicationController
   layout 'admin'
-  before_action :authenticate_admin!
 
   def index
     @projects = Project.all

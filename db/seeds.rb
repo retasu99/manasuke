@@ -47,6 +47,10 @@ example = Admin.find_or_create_by!(email: "admin@example.com") do |admin|
   admin.password = "adminpasuwado"
 end
 
+admin = Admin.find_or_create_by!(email: "admin_guest@example.com") do |admin|
+  admin.password = "adminguest"
+end
+
 5.times{|i|Project.find_or_create_by!(name: "project-#{i}")}
 Project.find_or_create_by!(name: "すごいproject")
 Project.find_or_create_by!(name: "絶対成功させたいproject")
@@ -54,5 +58,9 @@ Project.find_or_create_by!(name: "失敗したら弊社が潰れるproject")
 
 30.times{|i|PostWork.find_or_create_by!(project_id: "1", user_id: "1", name: "work#{i}", work: "test_work#{i}", area: "test_area#{i}", start_time: Time.current.since(i*2.days), end_time: Time.current.since(i*2.days))}
 
+
+Relationship.find_or_create_by!(follower_id: 2, followed_id: 1)
+
+Acknowledgement.find_or_create_by!(user_id: 3, post_work_id: 1)
 
 puts "seedの実行が完了しました"

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'dashboards/index'
+    post '/dashboards/admin_guest_in', to: 'dashboards#admin_guest'
     resources :users, only: [:index, :show, :destroy]
     resources :projects, only: [:index, :create, :destroy]
   end
