@@ -2,11 +2,16 @@
 
   <h1><%= @project.name %>  作業予定</h1>
 
-  <%= link_to "新規投稿", new_project_post_work_path(@project.id) %>
-
-  <p>================================================================</p>
-
-  <h2>month</h2>
+  <br>
+  <div>
+    <%= link_to new_project_post_work_path(@project.id) do %>
+      <button type="button" class="btn btn-success w-50">
+        新規投稿
+      </button>
+    <% end %>
+  </div>
+  <br>
+  <br>
 
   <div>
     <%= month_calendar events: @project.post_works do |date, post_works| %>
