@@ -1,24 +1,29 @@
+<div class="container text-center">
 <h1>プロジェクト一覧</h1>
 
-<ul>
-  <% @projects.each do |project| %>
-    <div>
-      <%= project.name %>
-      <%= link_to '削除', admin_project_path(project), method: :delete, data: { confirm: 'Are you sure you want to delete the project?' } %>
-      <br>
-      <br>
-    </div>
+  <table class="table">
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td>
+          <%= link_to admin_project_path(project), method: :delete, data: { confirm: 'プロジェクトを削除します。よろしいですか?' } do %>
+            <button type="button" class="btn btn-outline-dark">
+              削除
+            </button>
+          <% end %>
+        </td>
+      </tr>
+
+    <% end %>
+  </table>
+
+  <p>=================================================================</p>
+
+  <h1>プロジェクト新規作成</h1>
+
+  <%= form_with model: @new_project, url:admin_projects_path,local:true do |f| %>
+    <%= f.text_field :name, placeholder: "プロジェクト名" %>
+    <%= f.submit '作成' %>
   <% end %>
-</ul>
 
-<p>=================================================================</p>
-
-<h1>プロジェクト新規作成</h1>
-
-<%= form_with model: @new_project, url:admin_projects_path,local:true do |f| %>
-
-  <h4>プロジェクト名</h4>
-  <%= f.text_field :name %>
-
-  <%= f.submit '作成' %>
-<% end %>
+</div>

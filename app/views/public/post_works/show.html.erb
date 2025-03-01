@@ -39,6 +39,7 @@
       <div class="row d-flex justify-content-center">
 
         <ul class="list-unstyled">
+
           <li>
           <%= link_to acknowledged_users_user_path do %>
             <button type="button" class="btn btn-outline-dark">
@@ -57,18 +58,16 @@
             <li>
               <%=link_to edit_project_post_work_path(@project.id, @post_work.id) do %>
                 <button type="button" class="btn btn-outline-dark">
-                  編集
+                  内容を編集
                 </button>
               <% end %>
-            </li>
-            <br>
-            <li>
               <%=link_to project_post_work_path(@project.id, @post_work.id), method: :delete, "data-confirm" => "本当に削除してよろしいですか?" do %>
                 <button type="button" class="btn btn-outline-dark">
                   削除
                 </button>
               <% end %>
             </li>
+            <br>
           <% end %>
         </ul>
       </div>

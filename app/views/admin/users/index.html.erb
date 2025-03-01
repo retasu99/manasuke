@@ -1,12 +1,18 @@
+<div class="container text-center">
 <h1>ユーザー一覧</h1>
 
-<ul>
-  <% @users.each do |user| %>
-    <div>
-      <%= user.team %>
-      <%= link_to "#{user.name}", admin_user_path(user.id) %>
-      <br>
-      <br>
-    </div>
-  <% end %>
-</ul>
+  <table class="table">
+    <tr>
+      <th>所属</th>
+      <th>氏名</th>
+    </tr>
+
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.team %></td>
+        <td><%= link_to "#{user.name}", admin_user_path(user.id) %></td>
+      </tr>
+    <% end %>
+
+  </table>
+</div>

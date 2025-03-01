@@ -16,7 +16,7 @@ class Admin::ProjectsController < ApplicationController
   def destroy
     project = Project.find(params[:id])
     project.destroy
-    redirect_to admin_projects_path, notice: 'Deleted the project'
+    redirect_to admin_projects_path, notice: 'プロジェクトを削除しました。'
   end
 
 
