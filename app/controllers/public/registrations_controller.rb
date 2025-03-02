@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class Public::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_permitted_parameters, if: :devise_controller?
+class Public::RegistrationsController < Devise::RegistrationsController #ユーザーの新規登録機能
+  before_action :configure_permitted_parameters, if: :devise_controller? #新規登録アクションの実行前に、ある値を登録情報として許可
 
-  def after_sign_in_path_for(resource)
+  def after_sign_in_path_for(resource) #新規登録後、プロジェクト一覧ページへ遷移
     projects_path
   end
 
@@ -67,7 +67,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
   protected
 
-  def configure_permitted_parameters
+  def configure_permitted_parameters #ユーザーの新規登録時に、所属・氏名・電話番号の値を登録情報として許可
     devise_parameter_sanitizer.permit(:sign_up, keys: [:team, :name, :telephone_number])
   end
 end

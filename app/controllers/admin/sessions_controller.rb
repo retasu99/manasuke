@@ -28,11 +28,11 @@ class Admin::SessionsController < Devise::SessionsController
 
   protected
 
-  def after_sign_in_path_for(resource)
+  def after_sign_in_path_for(resource) #管理者としてログイン後、管理者トップページへ遷移
     admin_dashboards_index_path
   end
 
-  def after_sign_out_path_for(resource_or_scope)
+  def after_sign_out_path_for(resource_or_scope) #管理者からログアウト後、トップページへ遷移
     root_path
   end
 end
