@@ -1,5 +1,6 @@
-class Public::SearchesController < ApplicationController
-  def search
+class Public::SearchesController < ApplicationController #投稿・ユーザーの検索機能
+
+  def search #検索項目と検索ワードを取り出す
     @range = params[:range]
     @word = params[:word]
     if @range == "User"
