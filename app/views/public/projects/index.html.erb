@@ -1,9 +1,9 @@
 <div class="container text-center">
 <h1>プロジェクト一覧</h1>
 
-<% @projects.each do |project| %>
+  <% @projects.each do |project| %>
 
-  <div class="row py-3 d-flex justify-content-center">
+    <div class="row py-3 d-flex justify-content-center">
 
       <%= link_to project_post_works_path(project.id) do %>
         <button type="button" class="btn btn-outline-dark">
@@ -11,8 +11,8 @@
         </button>
       <% end %>
 
-  </div>
+    </div>
 
-<% end %>
+  <% end %>
 </div>
 

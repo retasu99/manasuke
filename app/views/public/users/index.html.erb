@@ -19,7 +19,7 @@
           <td>ログイン中</td>
           <td>ログイン中</td>
         <% else %>
-          <td><%#= render partial: "public/relationships/relationship", locals: { user: user } #%>
+          <td>
             <% if user.followed_by?(current_user) %>
               フォロー中
             <% else %>
