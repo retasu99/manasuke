@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_02_24_062945) do
+ActiveRecord::Schema.define(version: 2025_03_02_111751) do
 
   create_table "acknowledgements", force: :cascade do |t|
     t.integer "user_id"
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 2025_02_24_062945) do
     t.integer "subject_id"
     t.integer "user_id"
     t.integer "action_type", null: false
-    t.boolean "checked", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["subject_type", "subject_id"], name: "index_notifications_on_subject"

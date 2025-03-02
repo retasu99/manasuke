@@ -1,10 +1,6 @@
-<%= link_to transition_path(notification) do %>
-
-  <div>
-    <%= link_to notification.subject.user.name, user_path(notification.subject.user) %>
-    があなたの
-    <%= link_to notification.subject.post_work.name, project_post_work_path(notification.subject.post_work.project, notification.subject.post_work) %>
-    を承認しました
-  </div>
-
-<% end %>
+<div>
+  <%= link_to notification.subject.user.name, user_path(notification.subject.user) %>
+  があなたの
+  <%= link_to notification.subject.post_work.name, project_post_work_path(notification.subject.post_work.project, notification.subject.post_work) %>
+  を承認しました
+</div>

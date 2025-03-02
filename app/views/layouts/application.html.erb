@@ -27,7 +27,7 @@
 
         <div class="col-sm-2 text-center">
           <%= link_to notifications_path, class: 'text-light' do %>
-            <% if current_user.notifications.where(checked: false).exists? %>
+            <% if current_user.notifications.exists? %>
               <i class="fa-sharp fa-solid fa-bell" style="color: #FF0000"></i>
             <% else %>
               <i class="fa-sharp fa-solid fa-bell"></i>
