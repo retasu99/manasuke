@@ -6,8 +6,8 @@
     <tr>
       <th>所属</th>
       <th>氏名</th>
-      <th>フォローしてる？</th>
-      <th>フォローされてる？</th>
+      <th>フォロー中</th>
+      <th>フォロワー</th>
     </tr>
 
     <% @users.each do |user| %>
@@ -28,7 +28,7 @@
           </td>
           <td>
             <% if current_user.followed_by?(user) %>
-              フォロワーです
+              フォロワー
             <% else %>
               フォロワーではありません
             <% end %>

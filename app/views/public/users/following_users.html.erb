@@ -1,9 +1,9 @@
 <div class="container text-center">
-<h2>※新規投稿時 フォロー/フォロワー すべてのユーザーへ通知されます</h2><br>
+<h2>※新規投稿時 <br> フォロー/フォロワー <br> すべてのユーザーへ <br> 通知されます</h2><br>
 
   <div class="row">
     <div class="col">
-      <h3>~フォロー中リスト~</h3>
+      <h3>フォロー中</h3>
 
       <% if @user.following_users.present? %>
         <table class="table">
@@ -19,12 +19,12 @@
           <% end %>
         </table>
       <% else %>
-        <h4>フォローしているユーザーはいません</h4>
+        <p>フォローしていません</p>
       <% end %>
     </div>
 
     <div class="col">
-      <h3>~フォロワーリスト~</h3>
+      <h3>フォロワー</h3>
 
       <% if @user.followers.present? %>
         <table class="table">
@@ -41,7 +41,7 @@
           <% end %>
         </table>
       <% else %>
-        <h4>フォロワーはいません</h4>
+        <p>フォロワーはいません</p>
       <% end %>
     </div>
   </div>

@@ -1,9 +1,2 @@
 @use '~bootstrap/scss/bootstrap';
 @import "./simple_calendar.scss";
-
-
-@media screen and (max-width: 425px) {
-  body {
-    background-color: red;
-  }
-}
