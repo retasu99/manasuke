@@ -9,7 +9,7 @@ class Admin::DashboardsController < ApplicationController
       admin.password = "adminguest"
     end
     sign_in admin
-    redirect_to admin_dashboards_index_path, notice: 'ログインしました。お仕事がんばってください。無理しちゃいけませんよ？'
+    redirect_to admin_dashboards_index_path, notice: 'ログインしました。お仕事頑張り過ぎちゃだめですよ？'
   end
 
 end
