@@ -10,6 +10,6 @@ class Public::HomesController < ApplicationController
       user.password = "SecureRandom.urlsafe_base64"
     end
     sign_in user
-    redirect_to projects_path, notice: 'ログインしました。お仕事がんばってください。無理しちゃいけませんよ？'
+    redirect_to projects_path, notice: 'ログインしました。頑張り過ぎちゃいけませんよ？'
   end
 end

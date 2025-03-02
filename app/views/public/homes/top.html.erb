@@ -1,4 +1,4 @@
-<div class="top-page">
+<div class="container text-center">
 
   <h4 class="text-center">業務用スケジュール管理サイト</h4>
   <h1 class="text-center">~MANASUKE~</h1>
@@ -10,30 +10,33 @@
   ※業務と無関係な内容の投稿はお控えください。
   </p>
 
-</div>
+  <br>
+  <div>
+    <%= link_to new_user_session_path do %>
+      <button type="button" class="btn btn-primary w-50"> ログイン </button>
+    <% end %>
+  </div>
 
-<div class="log-in-button offset-4">
-  <%= link_to new_user_session_path do %>
-    <button type="button" class="btn btn-primary w-50 mt-3"> ログイン </button>
-  <% end %>
-</div>
+  <br>
+  <div>
+    <%= link_to new_user_registration_path do %>
+      <button type="button" class="btn btn-info w-50"> 新規登録 </button>
+    <% end %>
+  </div>
+  <br>
 
-<div class="sign-up-button offset-4">
-  <%= link_to new_user_registration_path do %>
-    <button type="button" class="btn btn-info w-50 mt-3"> 新規登録 </button>
-  <% end %>
-</div>
-<br>
-<br>
-<br>
-<div class="guest-log-in-button offset-4">
-  <%= link_to homes_guest_sign_in_path, method: :post do %>
-    <button type="button" class="btn btn-warning w-50 mt-3"> ゲストログイン(閲覧用) </button>
-  <% end %>
-</div>
-<br>
-<div class="admin-guest-log-in-button offset-4">
-  <%= link_to admin_dashboards_admin_guest_in_path, method: :post do %>
-    <button type="button" class="btn btn-warning w-50 mt-3"> 管理者ゲストログイン(閲覧用) </button>
-  <% end %>
+  <br>
+  <div>
+    <%= link_to homes_guest_sign_in_path, method: :post do %>
+      <button type="button" class="btn btn-warning w-50"> ゲストログイン<br>(閲覧用) </button>
+    <% end %>
+  </div>
+
+  <br>
+  <div>
+    <%= link_to admin_dashboards_admin_guest_in_path, method: :post do %>
+      <button type="button" class="btn btn-warning w-50"> 管理者ゲスト<br>ログイン<br>(閲覧用) </button>
+    <% end %>
+  </div>
+
 </div>

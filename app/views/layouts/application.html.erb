@@ -14,15 +14,9 @@
 
     <div class="header row bg-dark py-3">
 
-      <div class="col-2">
-        <%= link_to root_path, class: 'text-light' do %>
-          <span class="px-2"> トップページ </span>
-        <% end %>
-      </div>
-    
       <% if user_signed_in? %>
 
-        <div class="col-5">
+        <div class="col-sm-5 text-center">
           <%= form_with url: search_path, local: true, method: :get do |f| %>
             <%= f.text_field :word, size: 30, placeholder: '作業名もしくはユーザー名を入力' %>
             <%= f.select :range, options_for_select([['作業名','PostWork'], ['ユーザー','User']]) %>
@@ -31,8 +25,7 @@
           <% end %>
         </div>
 
-        <div class="col-5">
-
+        <div class="col-sm-2 text-center">
           <%= link_to notifications_path, class: 'text-light' do %>
             <% if current_user.notifications.where(checked: false).exists? %>
               <i class="fa-sharp fa-solid fa-bell" style="color: #FF0000"></i>
@@ -41,45 +34,63 @@
             <% end %>
             通知一覧
           <% end %>
+        </div>
 
+        <div class="col-sm-2 text-center">
           <%= link_to projects_path, class: 'text-light' do %>
-            <span class="px-2"> プロジェクト一覧 </span>
+            プロジェクト一覧
           <% end %>
+        </div>
+
+        <div class="col-sm-1 text-center">
           <%= link_to users_path, class: 'text-light' do %>
-            <span class="px-2"> ユーザー一覧 </span>
+            ユーザー一覧
           <% end %>
+        </div>
+
+        <div class="col-sm-1 text-center">
           <%= link_to user_path(current_user.id), class: 'text-light' do %>
-            <span class="px-2"> マイページ </span>
+            マイページ
           <% end %>
+        </div>
+
+        <div class="col-sm-1 text-center">
           <%= link_to destroy_user_session_path, method: :delete, class: 'text-light' do %>
-            <span class="px-2"> ログアウト </span>
+            ログアウト
           <% end %>
         </div>
 
       <% else %>
 
-      <div class="col-5 offset-5">
-      
-        <%= link_to homes_guest_sign_in_path, method: :post, class: 'text-light' do %>
-          <span class="px-2"> ゲストログイン(閲覧用) </span>
-        <% end %>
+        <div class="col-sm-3 text-center">
+          <%= link_to root_path, class: 'text-light' do %>
+            トップページ
+          <% end %>
+        </div>
 
-        <%= link_to new_user_registration_path, class: 'text-light' do %>
-          <span class="px-2"> 新規登録 </span>
-        <% end %>
-        <%= link_to new_user_session_path, class: 'text-light' do %>
-          <span class="px-2"> ログイン </span>
-        <% end %>
-        <%= link_to new_admin_session_path, class: 'text-light' do %>
-          <span class="px-2"> 管理者ログイン </span>
-        <% end %>
-      </div>
+        <div class="col-sm-3 text-center">
+          <%= link_to new_user_registration_path, class: 'text-light' do %>
+            新規登録
+          <% end %>
+        </div>
+
+        <div class="col-sm-3 text-center">
+          <%= link_to new_user_session_path, class: 'text-light' do %>
+            ログイン
+          <% end %>
+        </div>
+
+        <div class="col-sm-3 text-center">
+          <%= link_to new_admin_session_path, class: 'text-light' do %>
+            管理者ログイン
+          <% end %>
+        </div>
 
       <% end %>
     
     </div>
 
-    <h1 class="notice text-center"><%= notice %></h1>
+    <p class="notice text-center"><%= notice %></p>
     <p class="alert text-center"><%= alert %></p>
 
     <%= yield %>
