@@ -30,7 +30,6 @@ Rails.application.routes.draw do
         resource :acknowledgement, only: [:create, :destroy]                 #投稿への承認機能（いいね機能）
       end
     end
-
     get "search" => "searches#search"                                        #検索機能
     resources :notifications, only: [:index, :destroy]                       #通知機能
     
