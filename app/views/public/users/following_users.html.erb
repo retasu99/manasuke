@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="col">
-      <h3>フォロー中</h3>
+      <h4><%= "#{@user.name}" %>がフォローしているユーザー</h4>
 
       <% if @user.following_users.present? %>
         <table class="table">
@@ -24,7 +24,7 @@
     </div>
 
     <div class="col">
-      <h3>フォロワー</h3>
+      <h4><%= "#{@user.name}" %>をフォローしているユーザー</h4>
 
       <% if @user.followers.present? %>
         <table class="table">

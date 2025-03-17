@@ -56,11 +56,11 @@ Project.find_or_create_by!(name: "すごいproject")
 Project.find_or_create_by!(name: "絶対成功させたいproject")
 Project.find_or_create_by!(name: "失敗したら弊社が潰れるproject")
 
-30.times{|i|PostWork.find_or_create_by!(project_id: "1", user_id: "1", name: "作業#{i}", work: "test_work#{i}", area: "test_area#{i}", start_time: Time.current.since(i*2.days), end_time: Time.current.since(i*2.days))}
-
+30.times{|i|PostWork.find_or_create_by!(project_id: "1", user_id: "1", name: "塗装作業#{i}", work: "塗装作業します。該当区画、立入禁止です。", area: "区画#{i}", start_time: Time.current.since(i*2.days), end_time: Time.current.since((i*2+0.25).days))}
 
 Relationship.find_or_create_by!(follower_id: 2, followed_id: 1)
-
 Acknowledgement.find_or_create_by!(user_id: 3, post_work_id: 1)
+PostWork.find_or_create_by!(project_id: 1, user_id: 2, name: "電線の配線作業", work: "区画5の天井部にて配線作業します。 付近の火気作業はご遠慮願います。", area: "区画5", start_time: Time.current.since(10.days), end_time: Time.current.since((10.25).days))
+PostComment.find_or_create_by!(comment: "電線の配線作業をしたいです。時間調整のため、後で連絡させてください。", user_id: 2, post_work_id: 5)
 
 puts "seedの実行が完了しました"

@@ -3,7 +3,7 @@
 <h1>作業内容 編集フォーム</h1>
 
   <% if @post_work.errors.any? %>
-    <%= @post_work.errors.count %> error prohibited this obj from being saves:
+    <%= @post_work.errors.count %> 件のエラーが発生しました。
     <ul>
       <% @post_work.errors.full_messages.each do |message| %>
         <li><%= message %></li>

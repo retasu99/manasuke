@@ -76,10 +76,16 @@
 
 
     <div class="col-lg-4 text-center">
-      <h3>コメント件数：<%= @post_work.post_comments.count %></h3>
+      <% if @post_comment.errors.any? %>
+        <h4>コメントが入力されていません</h4>
+      <% end %>
+
+      <h4>コメント件数：<%= @post_work.post_comments.count %></h4>
       <p>-----------------------------------------------------</p>
       <% @post_work.post_comments.each do |post_comment| %>
         <p>投稿者 : <%= link_to "#{post_comment.user.name}", user_path(post_comment.user.id) %></p>
+        <p>投稿日時： <%= l post_comment.created_at, format: :short %></p>
+        
         <p><%= post_comment.comment %></p>
 
         <% if post_comment.user == current_user %>

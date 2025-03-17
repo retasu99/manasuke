@@ -4,7 +4,7 @@
   <h2>※新規投稿時 すべての "フォロー/フォロワー" へ通知されます</h2>
 
   <% if @post_work.errors.any? %>
-    <%= @post_work.errors.count %> error prohibited this obj from being saves:
+    <%= @post_work.errors.count %> 件のエラーが発生しました。
     <ul>
       <% @post_work.errors.full_messages.each do |message| %>
         <li><%= message %></li>

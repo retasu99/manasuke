@@ -2,7 +2,16 @@ ja:
   activerecord:
     attributes:
       user:
-        email: メールアドレス
+        team: 所属
+        name: 氏名
+        telephone_number: 電話番号
+        email: メールアドレス 
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: 次回から自動的にログイン
+      post_work:
+        name: 作業名
+        work: 作業内容
+        area: 作業区画
+        start_time: 作業開始日時
+        end_time: 作業終了日時
